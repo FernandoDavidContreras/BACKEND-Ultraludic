@@ -17,4 +17,7 @@ routerServicesPrincipal.put('/:id', servicesController.updateServicePrincipal)
 // ruta para eliminar un dato de la tabla serviciosprincipales de la bd
 routerServicesPrincipal.delete('/:id', servicesController.deleteServicePrincipal)
 
+// ruta para mostrar la relacion de tablas
+// routerServicesPrincipal.get('/:id/servicios', servicesController.getServicePrincipalServiciosCosto)
+
 export default routerServicesPrincipal

@@ -1,20 +1,8 @@
-import mysql from 'promise-mysql'
+import Sequelize from 'sequelize'
 import config from './../config'
 
 // conectamos la base de datos
-const connection = mysql.createConnection({
+export const sequelize = new Sequelize(config.database, config.user, config.password, {
   host: config.host,
-  database: config.database,
-  user: config.user,
-  password: config.password
+  dialect: 'mysql'
 })
-
-// funcion para devover la coneccion a la base de datos
-const getConnection = () => {
-  return connection
-}
-
-// exportamos la funcion de coneccion
-module.exports = {
-  getConnection
-}
