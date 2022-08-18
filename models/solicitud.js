@@ -2,6 +2,7 @@ import { DataTypes } from 'sequelize'
 import { sequelize } from '../src/database/database'
 import { Cotizacion } from './cotizacion'
 
+// estructura de la tabla solicitud
 export const Solicitud = sequelize.define('solicitud', {
   idPresolicitud: {
     type: DataTypes.INTEGER,
@@ -22,9 +23,6 @@ export const Solicitud = sequelize.define('solicitud', {
   },
   empresa: {
     type: DataTypes.STRING
-  },
-  FechaSolicitud: {
-    type: DataTypes.DATEONLY
   },
   idservices: {
     type: DataTypes.INTEGER

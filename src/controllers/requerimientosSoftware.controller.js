@@ -1,5 +1,6 @@
 import { requerimientosSoftware } from '../../models/requerimientosSoftware'
 
+// funcion para obtener todos los valores de la tablad de la BD
 const getRequerimientosSoftware = async (req, res) => {
   try {
     const requerimientossoftware = await requerimientosSoftware.findAll()
@@ -10,6 +11,7 @@ const getRequerimientosSoftware = async (req, res) => {
   }
 }
 
+// funcion para obtener un solo dato de la BD
 const getRequetimientoSoftware = async (req, res) => {
   try {
     const { id } = req.params
@@ -25,6 +27,7 @@ const getRequetimientoSoftware = async (req, res) => {
   }
 }
 
+// funcion para agregar datos a la BD
 const addrequerimientosSoftware = async (req, res) => {
   try {
     const { name, idusuarios } = req.params
@@ -42,6 +45,7 @@ const addrequerimientosSoftware = async (req, res) => {
   }
 }
 
+// funcion para eliminar datos de la BD
 const deleteRequerimientosSoftware = async (req, res) => {
   try {
     const { id } = req.params

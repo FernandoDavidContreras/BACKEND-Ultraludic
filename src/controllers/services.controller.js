@@ -1,6 +1,7 @@
 import { Servicios } from '../../models/servicios'
 import { Costos } from '../../models/costos'
 
+// funcion para obtener todos los valores de la tablad de la BD
 const getServices = async (req, res) => {
   try {
     const services = await Servicios.findAll()
@@ -11,6 +12,7 @@ const getServices = async (req, res) => {
   }
 }
 
+// funcion para obtener un solo registro
 const getService = async (req, res) => {
   try {
     const { id } = req.params
@@ -26,6 +28,7 @@ const getService = async (req, res) => {
   }
 }
 
+// ruta para hcer la relacion de la tabla servicios con la tabla costos
 const getServiciosCosto = async (req, res) => {
   try {
     const { id } = req.params

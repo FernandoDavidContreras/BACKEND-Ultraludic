@@ -31,7 +31,7 @@ const getCosto = async (req, res) => {
 const addCostos = async (req, res) => {
   try {
     const { name, semana, hora, precio, idservicios } = req.body
-    if (name === undefined || semana === undefined || hora === undefined || precio === undefined || idservicios === undefined) {
+    if (name === undefined || semana === undefined || hora === undefined || precio === undefined) {
       res.status(400).json({ message: 'Bad request. Please fill all field.' })
     }
     await Costos.create({
@@ -54,7 +54,7 @@ const deleteCostos = async (req, res) => {
     const { id } = req.params
     const result = await Costos.destroy({
       where: {
-        idservicios: id
+        idCosto: id
       }
     })
     res.json(result)

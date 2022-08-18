@@ -1,7 +1,8 @@
-import { Usuarios } from '../../models/usuarios'
+import { Usuarios, methods as usuariosMetodos } from '../../models/usuarios'
 import { Solicitud } from '../../models/solicitud'
 import { Servicios } from '../../models/servicios'
 
+// funcion para obtener todos lo datos de la BD
 const getUsuarios = async (req, res) => {
   try {
     const usuarios = await Usuarios.findAll()
@@ -12,6 +13,7 @@ const getUsuarios = async (req, res) => {
   }
 }
 
+// funcion para obtener un solo dato de la BD
 const getUsuario = async (req, res) => {
   try {
     const { id } = req.params
@@ -27,16 +29,21 @@ const getUsuario = async (req, res) => {
   }
 }
 
+// funcion para agregar usuarios a la BD
 const addUsuario = async (req, res) => {
   try {
     const { nombre, correo, contrasenia } = req.body
     if (nombre === undefined || correo === undefined || contrasenia === undefined) {
       res.status(400).json({ message: 'Bad request. Please fill all field.' })
     }
+
+    // incriptamos la contrasenia
+    const contraseniaCrypt = await usuariosMetodos.encryptPassword(contrasenia)
+
     const newUsuario = await Usuarios.create({
       nombre,
       correo,
-      contrasenia
+      contrasenia: contraseniaCrypt
     })
     res.json(newUsuario)
   } catch (error) {
@@ -45,6 +52,7 @@ const addUsuario = async (req, res) => {
   }
 }
 
+// funcion para eliminar usuarios de la BD
 const deleteUsuario = async (req, res) => {
   try {
     const { id } = req.params
@@ -60,6 +68,7 @@ const deleteUsuario = async (req, res) => {
   }
 }
 
+// funcion para crear la relacion del usuario y la solicitud de una cotizacion
 const getUsuarioSolicitud = async (req, res) => {
   try {
     const { id } = req.params

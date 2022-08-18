@@ -1,5 +1,6 @@
 import { RequerimientosHardware, requerimientosHardware } from '../../models/requerimientosHardware'
 
+// funcion para obtener todos los valores de la tablad de la BD
 const getRequetimientosHardware = async (req, res) => {
   try {
     const requerimientoshardware = await requerimientosHardware.findAll()
@@ -10,6 +11,7 @@ const getRequetimientosHardware = async (req, res) => {
   }
 }
 
+// funcion para obtener un solo dato de la BD
 const getRequetimientoHardware = async (req, res) => {
   try {
     const { id } = req.params
@@ -25,6 +27,7 @@ const getRequetimientoHardware = async (req, res) => {
   }
 }
 
+// funcion para agregar datos a la BD
 const addrequerimientosHardware = async (req, res) => {
   try {
     const { name, idusuarios } = req.params
@@ -42,6 +45,7 @@ const addrequerimientosHardware = async (req, res) => {
   }
 }
 
+// funcion para eliminar datos de la BD
 const deleteRequerimientosHardware = async (req, res) => {
   try {
     const { id } = req.params

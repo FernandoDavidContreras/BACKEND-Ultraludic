@@ -1,6 +1,7 @@
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../src/database/database'
 
+// estructura de la tabla cotizacion de la BD
 export const Cotizacion = sequelize.define('Cotizacion', {
   idCotizaciones: {
     type: DataTypes.INTEGER,
@@ -9,9 +10,6 @@ export const Cotizacion = sequelize.define('Cotizacion', {
   },
   name: {
     type: DataTypes.STRING
-  },
-  fecha: {
-    type: DataTypes.DATEONLY
   },
   costoTotal: {
     type: DataTypes.INTEGER

@@ -1,7 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
-// Routes
+// importamos archivos de funcionamiento del proyecto
 import costosRoutes from './routes/costos.routes'
 import servicesPrincipalRoutes from './routes/servicesPrincipal.routes'
 import services from './routes/services.routes'

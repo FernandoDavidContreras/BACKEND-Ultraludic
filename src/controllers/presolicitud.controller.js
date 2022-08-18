@@ -1,5 +1,6 @@
 import { Solicitud } from '../../models/solicitud'
 
+// obtener todos los datos de la tabla presolicitud
 const getPresolicitudes = async (req, res) => {
   try {
     const solicitud = await Solicitud.findAll()
@@ -10,6 +11,7 @@ const getPresolicitudes = async (req, res) => {
   }
 }
 
+// obtener un solo dato de la BD
 const getPresolicitud = async (req, res) => {
   try {
     const { id } = req.params
@@ -25,15 +27,16 @@ const getPresolicitud = async (req, res) => {
   }
 }
 
+// agregar una solicitud a la tabla Solicitud de la BD
 const addPresolicitud = async (req, res) => {
   try {
-    const { descripcion, requerimientosHardware, requerimientosSoftware, tiempo, empresa, FechaSolicitud, idservices, idusuarios } = req.body
+    const { descripcion, requerimientosHardware, requerimientosSoftware, tiempo, empresa, idservices, idusuarios } = req.body
 
-    if (descripcion === undefined || tiempo === undefined || empresa === undefined || FechaSolicitud === undefined || idservices === undefined || idusuarios === undefined || requerimientosHardware === undefined || requerimientosSoftware === undefined) {
+    if (descripcion === undefined || tiempo === undefined || empresa === undefined || idservices === undefined || idusuarios === undefined || requerimientosHardware === undefined || requerimientosSoftware === undefined) {
       res.status(400).json({ message: 'Bad request. Please fill all field.' })
     }
     const newPresolicitud = await Solicitud.create(
-      { descripcion, requerimientosHardware, requerimientosSoftware, tiempo, empresa, FechaSolicitud, idservices, idusuarios }
+      { descripcion, requerimientosHardware, requerimientosSoftware, tiempo, empresa, idservices, idusuarios }
     )
     res.json(newPresolicitud)
   } catch (error) {
@@ -42,6 +45,7 @@ const addPresolicitud = async (req, res) => {
   }
 }
 
+// eliminar una solicitud
 const deletePresolicitud = async (req, res) => {
   try {
     const { id } = req.params

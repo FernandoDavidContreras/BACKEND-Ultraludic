@@ -4,6 +4,7 @@ import { Costos } from './costos'
 import { Solicitud } from './solicitud'
 import { Cotizacion } from './cotizacion'
 
+// estructura de la tabla servicios de la BD
 export const Servicios = sequelize.define('servicios', {
   idServicios: {
     type: DataTypes.INTEGER,

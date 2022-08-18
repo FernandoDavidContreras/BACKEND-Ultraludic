@@ -2,6 +2,7 @@ import { DataTypes } from 'sequelize'
 import { sequelize } from '../src/database/database'
 import { Cotizacion } from './cotizacion'
 
+// estructura de la tabla requerimientosHardware de la BD
 export const RequerimientosHardware = sequelize.define('RequerimientosHardware', {
   idHardware: {
     type: DataTypes.INTEGER,
@@ -16,6 +17,7 @@ export const RequerimientosHardware = sequelize.define('RequerimientosHardware',
   }
 })
 
+// relacion con la tabla cotizacion
 RequerimientosHardware.hasMany(Cotizacion, {
   foreignKey: 'idhardware',
   sourceKey: 'idHardware'

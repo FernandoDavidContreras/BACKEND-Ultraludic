@@ -2,6 +2,7 @@ import { DataTypes } from 'sequelize'
 import { sequelize } from '../src/database/database'
 import { Servicios } from './servicios'
 
+// estructura de la tabla serviciosPRincipales
 export const ServiciosPrincipales = sequelize.define('ServiciosPrincipales', {
   idServiciosP: {
     type: DataTypes.INTEGER,
@@ -13,7 +14,7 @@ export const ServiciosPrincipales = sequelize.define('ServiciosPrincipales', {
   }
 
 })
-
+// relacion con la tabla servicios
 ServiciosPrincipales.hasMany(Servicios, {
   foreignKey: 'idServiciosPrincipales',
   sourceKey: 'idServiciosP'
