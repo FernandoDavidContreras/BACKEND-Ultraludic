@@ -8,7 +8,7 @@ import { Cotizacion } from './cotizacion'
 const bcrypt = require('bcryptjs')// variable para acceder a las funciones de encriptamiento para el password
 
 // estructura de la BD Usuarios
-export const Usuarios = sequelize.define('Usuarios', {
+export const Usuarioos = sequelize.define('Usuarios', {
   idUsuarios: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -26,44 +26,44 @@ export const Usuarios = sequelize.define('Usuarios', {
 })
 
 // relacion con la tabla soliocitud
-Usuarios.hasMany(Solicitud, {
+Usuarioos.hasMany(Solicitud, {
   foreignKey: 'idusuarios',
   sourceKey: 'idUsuarios'
 })
 
-Solicitud.belongsTo(Usuarios, {
+Solicitud.belongsTo(Usuarioos, {
   foreignKey: 'idusuarios',
   targetId: 'idPresolicitud'
 })
 
 // relacion con la tabla requerimientosSoftware
-Usuarios.hasMany(RequerimientosSoftware, {
+Usuarioos.hasMany(RequerimientosSoftware, {
   foreignKey: 'idusuarios',
   sourceKey: 'idUsuarios'
 })
 
-RequerimientosSoftware.belongsTo(Usuarios, {
+RequerimientosSoftware.belongsTo(Usuarioos, {
   foreignKey: 'idusuarios',
   targetId: 'idSoftware'
 })
 
 // relacion con la tabla requerimientosHardware
-Usuarios.hasMany(RequerimientosHardware, {
+Usuarioos.hasMany(RequerimientosHardware, {
   foreignKey: 'idusuarios',
   sourceKey: 'idUsuarios'
 })
 
-RequerimientosHardware.belongsTo(Usuarios, {
+RequerimientosHardware.belongsTo(Usuarioos, {
   foreignKey: 'idusuarios',
   targetId: 'idHardware'
 })
 
-Usuarios.hasMany(Cotizacion, {
+Usuarioos.hasMany(Cotizacion, {
   foreignKey: 'idUser',
   sourceKey: 'idUsuarios'
 })
 
-Cotizacion.belongsTo(Usuarios, {
+Cotizacion.belongsTo(Usuarioos, {
   foreignKey: 'idUser',
   targetId: 'idCotizaciones'
 })
@@ -72,6 +72,7 @@ Cotizacion.belongsTo(Usuarios, {
 const encryptPassword = async (contrasenia) => {
   return bcrypt.hash(contrasenia, 10)
 }
+
 export const methods = {
   encryptPassword
 }
