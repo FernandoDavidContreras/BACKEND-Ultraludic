@@ -6,6 +6,8 @@ routerPresolicitud.get('/', presolicitudController.getPresolicitudes)
 
 routerPresolicitud.get('/:id', presolicitudController.getPresolicitud)
 
+routerPresolicitud.get('/:id/usuario', presolicitudController.getPresolicitudUser)
+
 routerPresolicitud.post('/', presolicitudController.addPresolicitud)
 
 routerPresolicitud.delete('/:id', presolicitudController.deletePresolicitud)

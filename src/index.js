@@ -2,13 +2,11 @@ import app from './app'
 import { sequelize } from './database/database'
 // import './../models/costos'
 // import './../models/cotizacion'
-// import './../models/requerimientosHardware'
-// import './../models/requerimientosSoftware'
 // import './../models/serviciosprincipales'
 // import './../models/servicios'
 // import './../models/solicitud'
 // import './../models/usuarios'
-
+// import './../models/roles'
 const main = async () => {
   try {
     await sequelize.sync({ force: false })

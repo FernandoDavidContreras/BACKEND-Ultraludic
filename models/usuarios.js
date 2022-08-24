@@ -1,8 +1,6 @@
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../src/database/database'
 import { Solicitud } from './solicitud'
-import { RequerimientosSoftware } from './requerimientosSoftware'
-import { RequerimientosHardware } from './requerimientosHardware'
 import { Cotizacion } from './cotizacion'
 
 const bcrypt = require('bcryptjs')// variable para acceder a las funciones de encriptamiento para el password
@@ -22,6 +20,9 @@ export const Usuarioos = sequelize.define('Usuarios', {
   },
   contrasenia: {
     type: DataTypes.STRING
+  },
+  idRoles: {
+    type: DataTypes.INTEGER
   }
 })
 
@@ -34,28 +35,6 @@ Usuarioos.hasMany(Solicitud, {
 Solicitud.belongsTo(Usuarioos, {
   foreignKey: 'idusuarios',
   targetId: 'idPresolicitud'
-})
-
-// relacion con la tabla requerimientosSoftware
-Usuarioos.hasMany(RequerimientosSoftware, {
-  foreignKey: 'idusuarios',
-  sourceKey: 'idUsuarios'
-})
-
-RequerimientosSoftware.belongsTo(Usuarioos, {
-  foreignKey: 'idusuarios',
-  targetId: 'idSoftware'
-})
-
-// relacion con la tabla requerimientosHardware
-Usuarioos.hasMany(RequerimientosHardware, {
-  foreignKey: 'idusuarios',
-  sourceKey: 'idUsuarios'
-})
-
-RequerimientosHardware.belongsTo(Usuarioos, {
-  foreignKey: 'idusuarios',
-  targetId: 'idHardware'
 })
 
 Usuarioos.hasMany(Cotizacion, {

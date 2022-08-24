@@ -1,5 +1,7 @@
 import { Router } from 'express'
 import { methods as costosController } from '../controllers/costos.controller'
+import { verifyToken, verifyAdmin } from '../controllers/verifyDates'
+
 const costosRoutes = Router()
 
 // ruta para acceder a todos los datos de la tabla costos de la base de datos.
@@ -12,9 +14,9 @@ costosRoutes.get('/:id', costosController.getCosto)
 costosRoutes.post('/', costosController.addCostos)
 
 // ruta para actualizar un dato de la tabla costos base de datos
-costosRoutes.put('/:id', costosController.updateCostos)
+costosRoutes.put('/:id', [verifyToken, verifyAdmin], costosController.updateCostos)
 
 // ruta para eliminar un dato de la tabla costos base de datos
-costosRoutes.delete('/:id', costosController.deleteCostos)
+costosRoutes.delete('/:id', [verifyToken, verifyAdmin], costosController.deleteCostos)
 
 export default costosRoutes

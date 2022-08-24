@@ -1,6 +1,6 @@
 import { Usuarioos, methods as usuariosMetodos } from '../../models/usuarios'
-import { Solicitud } from '../../models/solicitud'
-import { Servicios } from '../../models/servicios'
+import { Cotizacion } from '../../models/cotizacion'
+
 import config from '../config'
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')// variable para acceder a las funciones de encriptamiento para el password
@@ -37,24 +37,36 @@ const getUsuario = async (req, res) => {
 }
 
 // funcion para agregar usuarios a la BD
-const addUsuario = async (req, res) => {
+const addUsuario = async (req, res, next) => {
   try {
-    const { nombre, correo, contrasenia } = req.body
-    if (nombre === undefined || correo === undefined || contrasenia === undefined) {
+    const { nombre, correo, contrasenia, idRoles } = req.body
+    if (nombre === undefined || correo === undefined || contrasenia === undefined || idRoles === undefined) {
       res.status(400).json({ message: 'Bad request. Please fill all field.' })
     }
 
-    // incriptamos la contrasenia
-    const contraseniaCrypt = await usuariosMetodos.encryptPassword(contrasenia)
-
-    const newUsuario = await Usuarioos.create({
-      nombre,
-      correo,
-      contrasenia: contraseniaCrypt
+    const user = await Usuarioos.findOne({
+      where: {
+        nombre,
+        correo,
+        idRoles
+      }
     })
-    const token = jwt.sign({ id: newUsuario.idUsuarios }, config.secret)
-    console.log(token)
-    res.json({ newUsuario, token })
+
+    if (user) {
+      res.json({ message: 'El usuario ya existe' })
+    } else {
+      // incriptamos la contrasenia
+      const contraseniaCrypt = await usuariosMetodos.encryptPassword(contrasenia)
+
+      const newUsuario = await Usuarioos.create({
+        nombre,
+        correo,
+        contrasenia: contraseniaCrypt,
+        idRoles
+      })
+      const token = jwt.sign({ id: newUsuario.idUsuarios }, config.secret)
+      res.json({ newUsuario, token })
+    }
   } catch (error) {
     res.status(500)
     res.send(error.message)
@@ -84,7 +96,6 @@ const getVerification = async (req, res) => {
         idUsuarios: req.userId
       }
     })
-
     if (!response) {
       return res.status(404).send('No user found')
     }
@@ -117,7 +128,7 @@ const getSignin = async (req, res) => {
 
     const token = jwt.sign({ id: user.dataValues.idUsuarios }, config.secret)
 
-    res.json(token)
+    res.json({ user, token })
   } catch (error) {
     res.status(500)
     res.send(error.message)
@@ -125,30 +136,23 @@ const getSignin = async (req, res) => {
 }
 
 // funcion para crear la relacion del usuario y la solicitud de una cotizacion
-const getUsuarioSolicitud = async (req, res) => {
+const getUsuarioCotizacion = async (req, res) => {
   try {
     const { id } = req.params
-    const response = await Solicitud.findAll({
+    const response = await Cotizacion.findAll({
       attributes: [
-        'idPresolicitud',
-        'descripcion',
-        'requerimientosHardware',
-        'requerimientosSoftware',
-        'tiempo',
-        'empresa',
-        'FechaSolicitud',
+        'idCotizaciones',
+        'name',
+        'costoTotal',
+        'requerimientoshardware',
+        'requerimientossoftware',
         'idservices',
-        'idusuarios'
+        'idpresolicitud',
+        'idcostos',
+        'idUser'
       ],
       include: [
-        {
-          model: Servicios,
-          attributes: [
-            'idServicios',
-            'name',
-            'idServiciosPrincipales'
-          ]
-        },
+
         {
           model: Usuarioos,
           where: {
@@ -159,6 +163,7 @@ const getUsuarioSolicitud = async (req, res) => {
             'nombre',
             'correo'
           ]
+
         }
       ]
     })
@@ -174,7 +179,7 @@ export const methods = {
   getUsuario,
   addUsuario,
   deleteUsuario,
-  getUsuarioSolicitud,
+  getUsuarioCotizacion,
   getVerification,
   getSignin
 }
