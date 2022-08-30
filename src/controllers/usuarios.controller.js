@@ -39,8 +39,8 @@ const getUsuario = async (req, res) => {
 // funcion para agregar usuarios a la BD
 const addUsuario = async (req, res, next) => {
   try {
-    const { nombre, correo, contrasenia, idRoles } = req.body
-    if (nombre === undefined || correo === undefined || contrasenia === undefined || idRoles === undefined) {
+    const { nombre, correo, telefono, contrasenia, idRoles } = req.body
+    if (nombre === undefined || correo === undefined || contrasenia === undefined || idRoles === undefined || telefono === undefined) {
       res.status(400).json({ message: 'Bad request. Please fill all field.' })
     }
 
@@ -48,6 +48,7 @@ const addUsuario = async (req, res, next) => {
       where: {
         nombre,
         correo,
+        telefono,
         idRoles
       }
     })
@@ -61,6 +62,7 @@ const addUsuario = async (req, res, next) => {
       const newUsuario = await Usuarioos.create({
         nombre,
         correo,
+        telefono,
         contrasenia: contraseniaCrypt,
         idRoles
       })

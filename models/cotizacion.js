@@ -29,6 +29,9 @@ export const Cotizacion = sequelize.define('Cotizacion', {
   idcostos: {
     type: DataTypes.INTEGER
   },
+  idcostoshardware: {
+    type: DataTypes.INTEGER
+  },
   idUser: {
     type: DataTypes.INTEGER
   }

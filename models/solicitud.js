@@ -21,6 +21,9 @@ export const Solicitud = sequelize.define('solicitud', {
   tiempo: {
     type: DataTypes.INTEGER
   },
+  kiosco: {
+    type: DataTypes.INTEGER
+  },
   empresa: {
     type: DataTypes.STRING
   },

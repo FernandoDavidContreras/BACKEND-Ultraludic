@@ -18,6 +18,9 @@ export const Usuarioos = sequelize.define('Usuarios', {
   correo: {
     type: DataTypes.STRING
   },
+  telefono: {
+    type: DataTypes.INTEGER
+  },
   contrasenia: {
     type: DataTypes.STRING
   },

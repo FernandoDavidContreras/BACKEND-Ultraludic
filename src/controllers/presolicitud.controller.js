@@ -1,5 +1,4 @@
 import { Solicitud } from '../../models/solicitud'
-import { Usuarioos } from '../../models/usuarios'
 
 // obtener todos los datos de la tabla presolicitud
 const getPresolicitudes = async (req, res) => {
@@ -31,13 +30,13 @@ const getPresolicitud = async (req, res) => {
 // agregar una solicitud a la tabla Solicitud de la BD
 const addPresolicitud = async (req, res) => {
   try {
-    const { descripcion, requerimientosHardware, requerimientosSoftware, tiempo, empresa, idservices, idusuarios } = req.body
+    const { descripcion, requerimientosHardware, requerimientosSoftware, tiempo, kiosco, empresa, idservices, idusuarios } = req.body
 
-    if (descripcion === undefined || tiempo === undefined || empresa === undefined || idservices === undefined || idusuarios === undefined || requerimientosHardware === undefined || requerimientosSoftware === undefined) {
+    if (descripcion === undefined || tiempo === undefined || empresa === undefined || idservices === undefined || idusuarios === undefined || requerimientosHardware === undefined || requerimientosSoftware === undefined || kiosco === undefined) {
       res.status(400).json({ message: 'Bad request. Please fill all field.' })
     }
     const newPresolicitud = await Solicitud.create(
-      { descripcion, requerimientosHardware, requerimientosSoftware, tiempo, empresa, idservices, idusuarios }
+      { descripcion, requerimientosHardware, requerimientosSoftware, tiempo, kiosco, empresa, idservices, idusuarios }
     )
     res.json(newPresolicitud)
   } catch (error) {
@@ -62,44 +61,9 @@ const deletePresolicitud = async (req, res) => {
   }
 }
 
-const getPresolicitudUser = async (req, res) => {
-  try {
-    const { id } = req.params
-    const response = await Usuarioos.findAll({
-      attributes: [
-        'idUsuarios',
-        'nombre',
-        'correo'
-      ],
-      include: [
-        {
-          model: Solicitud,
-          where: {
-            idusuarios: id
-          },
-          attributes: [
-            'descripcion',
-            'requerimientosHardware',
-            'requerimientosSoftware',
-            'tiempo',
-            'empresa'
-          ]
-        }
-
-      ]
-
-    })
-    res.json(response)
-  } catch (error) {
-    res.status(500)
-    res.send(error.message)
-  }
-}
-
 export const methods = {
   getPresolicitudes,
   getPresolicitud,
   addPresolicitud,
-  deletePresolicitud,
-  getPresolicitudUser
+  deletePresolicitud
 }

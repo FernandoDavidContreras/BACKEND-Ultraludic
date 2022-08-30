@@ -1,10 +1,10 @@
-import { CostosSoftware } from '../../models/costos'
+import { costosHardware } from '../../models/costosHardaware'
 
 // acceso a datos que estan registrados en la tabla costos de la Base de Datos
-const getCostos = async (req, res) => {
+const getCostosHardware = async (req, res) => {
   try {
-    const result = await CostosSoftware.findAll()
-    res.json(result)
+    const response = await costosHardware.findAll()
+    res.json(response)
   } catch (error) {
     res.status(500)
     res.send(error.message)
@@ -12,12 +12,12 @@ const getCostos = async (req, res) => {
 }
 
 // funcion para obtener datos por la id de la base de datos
-const getCosto = async (req, res) => {
+const getCostoHardware = async (req, res) => {
   try {
     const { id } = req.params
-    const result = await CostosSoftware.findOne({
+    const result = await costosHardware.findOne({
       where: {
-        idCosto: id
+        idCostoHardware: id
       }
     })
     res.json(result)
@@ -28,16 +28,16 @@ const getCosto = async (req, res) => {
 }
 
 // funcion para agregar datos a la base de datos.
-const addCostos = async (req, res) => {
+const addCostosHardware = async (req, res) => {
   try {
-    const { name, precio, idservicios } = req.body
-    if (name === undefined || precio === undefined) {
+    const { name, semana, idservicio } = req.body
+    if (name === undefined || semana === undefined) {
       res.status(400).json({ message: 'Bad request. Please fill all field.' })
     }
-    await CostosSoftware.create({
+    await costosHardware.create({
       name,
-      precio,
-      idservicios
+      semana,
+      idservicio
     })
     res.json({ message: 'costos add' })
   } catch (error) {
@@ -47,12 +47,12 @@ const addCostos = async (req, res) => {
 }
 
 // funcion para eliminar datos de la base de datos
-const deleteCostos = async (req, res) => {
+const deleteCostosHardware = async (req, res) => {
   try {
     const { id } = req.params
-    const result = await CostosSoftware.destroy({
+    const result = await costosHardware.destroy({
       where: {
-        idCosto: id
+        idCostoHardware: id
       }
     })
     res.json(result)
@@ -63,16 +63,16 @@ const deleteCostos = async (req, res) => {
 }
 
 // actualizar valores de la base de datos
-const updateCostos = async (req, res) => {
+const updateCostosHardware = async (req, res) => {
   try {
     const { id } = req.params
 
-    const { name, precio, idservicios } = req.body
+    const { name, semana, idservicio } = req.body
 
-    if (id === undefined || precio === undefined || name === undefined || idservicios === undefined) {
+    if (id === undefined || semana === undefined || name === undefined || idservicio === undefined) {
       res.status(400).json({ message: 'Bad request. Please fill all field.' })
     }
-    const result = await CostosSoftware.findByPk(id)
+    const result = await costosHardware.findByPk(id)
     result.set(req.body)
     await result.save()
     res.json(result)
@@ -84,9 +84,9 @@ const updateCostos = async (req, res) => {
 
 // exportamos las funciones para hacer uso en language.routes.js
 export const methods = {
-  getCostos,
-  getCosto,
-  addCostos,
-  deleteCostos,
-  updateCostos
+  getCostosHardware,
+  getCostoHardware,
+  addCostosHardware,
+  deleteCostosHardware,
+  updateCostosHardware
 }

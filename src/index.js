@@ -7,6 +7,8 @@ import { sequelize } from './database/database'
 // import './../models/solicitud'
 // import './../models/usuarios'
 // import './../models/roles'
+// import './../models/costosHardaware'
+
 const main = async () => {
   try {
     await sequelize.sync({ force: false })

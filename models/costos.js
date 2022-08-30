@@ -3,7 +3,7 @@ import { sequelize } from '../src/database/database'
 import { Cotizacion } from './cotizacion'
 
 // estructura de la tabla Costos de la BD
-export const Costos = sequelize.define('Costos', {
+export const CostosSoftware = sequelize.define('CostosSoftware', {
   idCosto: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -11,12 +11,6 @@ export const Costos = sequelize.define('Costos', {
   },
   name: {
     type: DataTypes.STRING
-  },
-  semana: {
-    type: DataTypes.INTEGER
-  },
-  hora: {
-    type: DataTypes.INTEGER
   },
   precio: {
     type: DataTypes.INTEGER
@@ -27,12 +21,12 @@ export const Costos = sequelize.define('Costos', {
 })
 
 // relacion con la tabla cotizacion
-Costos.hasMany(Cotizacion, {
+CostosSoftware.hasMany(Cotizacion, {
   foreignKey: 'idcostos',
   sourceKey: 'idCosto'
 })
 
-Cotizacion.belongsTo(Costos, {
+Cotizacion.belongsTo(CostosSoftware, {
   foreignKey: 'idcostos',
   targetId: 'idCosto'
 })

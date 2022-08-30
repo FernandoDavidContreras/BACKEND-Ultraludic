@@ -1,5 +1,5 @@
 import { Servicios } from '../../models/servicios'
-import { Costos } from '../../models/costos'
+import { CostosSoftware } from '../../models/costos'
 
 // funcion para obtener todos los valores de la tablad de la BD
 const getServices = async (req, res) => {
@@ -40,7 +40,7 @@ const getServiciosCosto = async (req, res) => {
       ],
       include: [
         {
-          model: Costos,
+          model: CostosSoftware,
           where: {
             idservicios: id
           },
