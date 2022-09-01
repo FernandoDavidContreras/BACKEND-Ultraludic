@@ -1,6 +1,5 @@
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../src/database/database'
-import { Cotizacion } from './cotizacion'
 
 // estructura de la tabla Costos de la BD
 export const CostosSoftware = sequelize.define('CostosSoftware', {
@@ -18,15 +17,4 @@ export const CostosSoftware = sequelize.define('CostosSoftware', {
   idservicios: {
     type: DataTypes.INTEGER
   }
-})
-
-// relacion con la tabla cotizacion
-CostosSoftware.hasMany(Cotizacion, {
-  foreignKey: 'idcostos',
-  sourceKey: 'idCosto'
-})
-
-Cotizacion.belongsTo(CostosSoftware, {
-  foreignKey: 'idcostos',
-  targetId: 'idCosto'
 })

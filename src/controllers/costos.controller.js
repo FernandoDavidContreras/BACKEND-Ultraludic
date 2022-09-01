@@ -27,6 +27,21 @@ const getCosto = async (req, res) => {
   }
 }
 
+const getCostoService = async (req, res) => {
+  try {
+    const { id } = req.params
+    const result = await CostosSoftware.findAll({
+      where: {
+        idservicios: id
+      }
+    })
+    res.json(result)
+  } catch (error) {
+    res.status(500)
+    res.send(error.message)
+  }
+}
+
 // funcion para agregar datos a la base de datos.
 const addCostos = async (req, res) => {
   try {
@@ -86,6 +101,7 @@ const updateCostos = async (req, res) => {
 export const methods = {
   getCostos,
   getCosto,
+  getCostoService,
   addCostos,
   deleteCostos,
   updateCostos

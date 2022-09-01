@@ -14,9 +14,6 @@ export const Servicios = sequelize.define('servicios', {
   },
   name: {
     type: DataTypes.STRING
-  },
-  idServiciosPrincipales: {
-    type: DataTypes.INTEGER
   }
 })
 

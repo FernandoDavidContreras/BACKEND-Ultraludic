@@ -10,6 +10,8 @@ costosRoutes.get('/', costosController.getCostos)
 // ruta para acceder a un dato concreto de la basde de datos
 costosRoutes.get('/:id', costosController.getCosto)
 
+costosRoutes.get('/service/:id', costosController.getCostoService)
+
 // ruta para agregar un elemento de la tabla costos a la base de datos
 costosRoutes.post('/', costosController.addCostos)
 

@@ -27,6 +27,21 @@ const getCostoHardware = async (req, res) => {
   }
 }
 
+const getCostosHardwareService = async (req, res) => {
+  try {
+    const { id } = req.params
+    const result = await costosHardware.findAll({
+      where: {
+        idservicio: id
+      }
+    })
+    res.json(result)
+  } catch (error) {
+    res.status(500)
+    res.send(error.message)
+  }
+}
+
 // funcion para agregar datos a la base de datos.
 const addCostosHardware = async (req, res) => {
   try {
@@ -86,6 +101,7 @@ const updateCostosHardware = async (req, res) => {
 export const methods = {
   getCostosHardware,
   getCostoHardware,
+  getCostosHardwareService,
   addCostosHardware,
   deleteCostosHardware,
   updateCostosHardware

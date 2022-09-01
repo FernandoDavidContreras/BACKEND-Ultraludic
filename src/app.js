@@ -3,7 +3,6 @@ import morgan from 'morgan'
 import cors from 'cors'
 // importamos archivos de funcionamiento del proyecto
 import costosRoutes from './routes/costos.routes'
-import servicesPrincipalRoutes from './routes/servicesPrincipal.routes'
 import services from './routes/services.routes'
 import routerPresolicitud from './routes/presolicitud.routes'
 import usuariosRoute from './routes/usuario.routes'
@@ -25,7 +24,6 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/api/costos', costosRoutes)// ruta para acceder a la tabla costos de la BD
-app.use('/api/servicesPrincipal', servicesPrincipalRoutes)// ruta para acceder a la tabla service principal de la BD
 app.use('/api/services', services)// ruta para acceder a la tabla servicios de la BD
 app.use('/api/presolicitud', routerPresolicitud)
 app.use('/api/usuarios', usuariosRoute)

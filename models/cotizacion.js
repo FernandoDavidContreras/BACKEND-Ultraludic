@@ -11,13 +11,31 @@ export const Cotizacion = sequelize.define('Cotizacion', {
   name: {
     type: DataTypes.STRING
   },
-  costoTotal: {
-    type: DataTypes.INTEGER
-  },
   requerimientoshardware: {
     type: DataTypes.STRING
   },
+  requerimientoshardwareUser: {
+    type: DataTypes.STRING
+  },
   requerimientossoftware: {
+    type: DataTypes.STRING
+  },
+  costossoftware: {
+    type: DataTypes.STRING
+  },
+  costoshardware: {
+    type: DataTypes.STRING
+  },
+  costoTotal: {
+    type: DataTypes.INTEGER
+  },
+  disenio: {
+    type: DataTypes.STRING
+  },
+  implementaciones: {
+    type: DataTypes.STRING
+  },
+  derechos: {
     type: DataTypes.STRING
   },
   idservices: {
@@ -26,12 +44,7 @@ export const Cotizacion = sequelize.define('Cotizacion', {
   idpresolicitud: {
     type: DataTypes.INTEGER
   },
-  idcostos: {
-    type: DataTypes.INTEGER
-  },
-  idcostoshardware: {
-    type: DataTypes.INTEGER
-  },
+
   idUser: {
     type: DataTypes.INTEGER
   }

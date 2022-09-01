@@ -18,7 +18,7 @@ const getService = async (req, res) => {
     const { id } = req.params
     const response = await Servicios.findAll({
       where: {
-        idServiciosPrincipales: id
+        idServicios: id
       }
     })
     res.json(response)
@@ -35,8 +35,7 @@ const getServiciosCosto = async (req, res) => {
     const response = await Servicios.findAll({
       attributes: [
         'idServicios',
-        'name',
-        'idServiciosPrincipales'
+        'name'
       ],
       include: [
         {
