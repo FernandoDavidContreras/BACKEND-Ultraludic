@@ -25,8 +25,8 @@ const getCotizacion = async (req, res) => {
 }
 const addCotizacion = async (req, res) => {
   try {
-    const { name, costoTotal, requerimientoshardware, requerimientossoftware, disenio, implementaciones, derechos, idservices, idpresolicitud, idcostos, idcostoshardware, idUser } = req.body
-    if (name === undefined || costoTotal === undefined || requerimientoshardware === undefined || requerimientossoftware === undefined || idservices === undefined || idpresolicitud === undefined || idcostos === undefined || idUser === undefined || idcostoshardware === undefined || disenio === undefined || implementaciones === undefined || derechos === undefined) {
+    const { name, costoTotal, requerimientoshardware, requerimientoshardwareUser, requerimientossoftware, disenio, implementaciones, derechos, idservices, idpresolicitud, costossoftware, costoshardware, idUser } = req.body
+    if (name === undefined || costoTotal === undefined || requerimientossoftware === undefined || idservices === undefined || idpresolicitud === undefined || costossoftware === undefined || idUser === undefined || disenio === undefined || implementaciones === undefined || derechos === undefined) {
       res.status(400).json({ message: 'Bad request. Please fill all field.' })
     }
 
@@ -34,13 +34,14 @@ const addCotizacion = async (req, res) => {
       name,
       costoTotal,
       requerimientoshardware,
+      requerimientoshardwareUser,
       requerimientossoftware,
+      costossoftware,
+      costoshardware,
       disenio,
       implementaciones,
       idservices,
       idpresolicitud,
-      idcostos,
-      idcostoshardware,
       idUser
     })
     res.json({ message: 'cotizacion create' })

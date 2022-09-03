@@ -145,12 +145,17 @@ const getUsuarioCotizacion = async (req, res) => {
       attributes: [
         'idCotizaciones',
         'name',
-        'costoTotal',
         'requerimientoshardware',
+        'requerimientoshardwareUser',
         'requerimientossoftware',
+        'costossoftware',
+        'costoshardware',
+        'costoTotal',
+        'disenio',
+        'implementaciones',
+        'derechos',
         'idservices',
         'idpresolicitud',
-        'idcostos',
         'idUser'
       ],
       include: [

@@ -44,7 +44,6 @@ export const Cotizacion = sequelize.define('Cotizacion', {
   idpresolicitud: {
     type: DataTypes.INTEGER
   },
-
   idUser: {
     type: DataTypes.INTEGER
   }

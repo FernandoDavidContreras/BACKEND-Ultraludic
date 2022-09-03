@@ -6,9 +6,9 @@ const costosHardwareRoutes = Router()
 
 // ruta para acceder a todos los datos de la tabla costos de la base de datos.
 costosHardwareRoutes.get('/', costosController.getCostosHardware)
-
 // ruta para acceder a un dato concreto de la basde de datos
 costosHardwareRoutes.get('/:id', costosController.getCostoHardware)
+costosHardwareRoutes.get('/service/:id', costosController.getCostosHardwareService)
 costosHardwareRoutes.get('/service/:id', costosController.getCostosHardwareService)
 // ruta para agregar un elemento de la tabla costos a la base de datos
 costosHardwareRoutes.post('/', [verifyToken, verifyAdmin], costosController.addCostosHardware)
