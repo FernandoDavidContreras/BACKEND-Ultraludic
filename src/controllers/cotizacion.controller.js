@@ -32,12 +32,12 @@ const addCotizacion = async (req, res) => {
 
     await Cotizacion.create({
       name,
-      costoTotal,
       requerimientoshardware,
       requerimientoshardwareUser,
       requerimientossoftware,
       costossoftware,
       costoshardware,
+      costoTotal,
       disenio,
       implementaciones,
       idservices,
