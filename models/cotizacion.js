@@ -30,13 +30,31 @@ export const Cotizacion = sequelize.define('Cotizacion', {
     type: DataTypes.INTEGER
   },
   disenio: {
-    type: DataTypes.STRING
+    type: DataTypes.TEXT
   },
   implementaciones: {
-    type: DataTypes.STRING
+    type: DataTypes.TEXT
   },
-  derechos: {
-    type: DataTypes.STRING
+  derechosUno: {
+    type: DataTypes.TEXT
+  },
+  derechosDos: {
+    type: DataTypes.TEXT
+  },
+  derechosTres: {
+    type: DataTypes.TEXT
+  },
+  derechosCuatro: {
+    type: DataTypes.TEXT
+  },
+  derechosCinco: {
+    type: DataTypes.TEXT
+  },
+  derechosSeis: {
+    type: DataTypes.TEXT
+  },
+  derechosSiete: {
+    type: DataTypes.TEXT
   },
   idservices: {
     type: DataTypes.INTEGER
