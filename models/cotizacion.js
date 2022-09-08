@@ -11,6 +11,9 @@ export const Cotizacion = sequelize.define('Cotizacion', {
   name: {
     type: DataTypes.STRING
   },
+  descripcion: {
+    type: DataTypes.TEXT
+  },
   requerimientoshardware: {
     type: DataTypes.STRING
   },
