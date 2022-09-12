@@ -17,6 +17,9 @@ export const Cotizacion = sequelize.define('Cotizacion', {
   requerimientoshardware: {
     type: DataTypes.STRING
   },
+  tiempoalquiler: {
+    type: DataTypes.INTEGER
+  },
   requerimientoshardwareUser: {
     type: DataTypes.STRING
   },
@@ -28,6 +31,9 @@ export const Cotizacion = sequelize.define('Cotizacion', {
   },
   costoshardware: {
     type: DataTypes.STRING
+  },
+  impuestos: {
+    type: DataTypes.INTEGER
   },
   costoTotal: {
     type: DataTypes.INTEGER
