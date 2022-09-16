@@ -14,6 +14,12 @@ export const Cotizacion = sequelize.define('Cotizacion', {
   descripcion: {
     type: DataTypes.TEXT
   },
+  costoDolar: {
+    type: DataTypes.INTEGER
+  },
+  alquilerCosto: {
+    type: DataTypes.STRING
+  },
   requerimientoshardware: {
     type: DataTypes.STRING
   },
@@ -41,28 +47,16 @@ export const Cotizacion = sequelize.define('Cotizacion', {
   disenio: {
     type: DataTypes.TEXT
   },
+  tiempoEntrega: {
+    type: DataTypes.TEXT
+  },
+  facturacion: {
+    type: DataTypes.TEXT
+  },
   implementaciones: {
     type: DataTypes.TEXT
   },
   derechosUno: {
-    type: DataTypes.TEXT
-  },
-  derechosDos: {
-    type: DataTypes.TEXT
-  },
-  derechosTres: {
-    type: DataTypes.TEXT
-  },
-  derechosCuatro: {
-    type: DataTypes.TEXT
-  },
-  derechosCinco: {
-    type: DataTypes.TEXT
-  },
-  derechosSeis: {
-    type: DataTypes.TEXT
-  },
-  derechosSiete: {
     type: DataTypes.TEXT
   },
   idservices: {

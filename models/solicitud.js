@@ -12,6 +12,9 @@ export const Solicitud = sequelize.define('solicitud', {
   descripcion: {
     type: DataTypes.TEXT
   },
+  venta: {
+    type: DataTypes.TEXT
+  },
   requerimientosHardware: {
     type: DataTypes.TEXT
   },

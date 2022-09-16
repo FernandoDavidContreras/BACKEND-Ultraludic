@@ -13,6 +13,9 @@ export const costosHardware = sequelize.define('CostosHardware', {
   semana: {
     type: DataTypes.INTEGER
   },
+  costo: {
+    type: DataTypes.INTEGER
+  },
   idservicio: {
     type: DataTypes.INTEGER
   }

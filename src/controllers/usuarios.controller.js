@@ -91,6 +91,44 @@ const deleteUsuario = async (req, res) => {
   }
 }
 
+const recuperarUser = async (req, res) => {
+  try {
+    const { nombre, correo, telefono, contrasenia } = req.body
+    if (nombre === undefined || correo === undefined || contrasenia === undefined || telefono === undefined) {
+      res.status(400).json({ message: 'Bad request. Please fill all field.' })
+    }
+
+    const user = await Usuarioos.findOne({
+      where: {
+        nombre,
+        correo,
+        telefono
+      }
+    })
+
+    if (user) {
+      // incriptamos la contrasenia
+      const contraseniaCrypt = await usuariosMetodos.encryptPassword(contrasenia)
+      await Usuarioos.update({
+        contrasenia: contraseniaCrypt
+      },
+      {
+        where: {
+          nombre,
+          correo
+        }
+      })
+
+      res.json({ message: 'Cambio de contraseña realizado correctamente', cambio: true })
+    } else {
+      res.status(404).send('El usuario no existe')
+    }
+  } catch (error) {
+    res.status(500)
+    res.send(error.message)
+  }
+}
+
 const getVerification = async (req, res) => {
   try {
     const response = await Usuarioos.findOne({
@@ -125,7 +163,7 @@ const getSignin = async (req, res) => {
 
     const passwordValid = bcrypt.compareSync(contrasenia, user.dataValues.contrasenia)
     if (!passwordValid) {
-      return res.status(401).json({ auth: false, token: null })
+      return res.status(401).json('El correo o el usuario es incorrecto')
     }
 
     const token = jwt.sign({ id: user.dataValues.idUsuarios }, config.secret)
@@ -145,6 +183,8 @@ const getUsuarioCotizacion = async (req, res) => {
       attributes: [
         'idCotizaciones',
         'name',
+        'costoDolar',
+        'alquilerCosto',
         'descripcion',
         'requerimientoshardware',
         'tiempoalquiler',
@@ -155,14 +195,10 @@ const getUsuarioCotizacion = async (req, res) => {
         'impuestos',
         'costoTotal',
         'disenio',
+        'tiempoEntrega',
+        'facturacion',
         'implementaciones',
         'derechosUno',
-        'derechosDos',
-        'derechosTres',
-        'derechosCuatro',
-        'derechosCinco',
-        'derechosSeis',
-        'derechosSiete',
         'idservices',
         'idpresolicitud',
         'idUser',
@@ -198,5 +234,6 @@ export const methods = {
   deleteUsuario,
   getUsuarioCotizacion,
   getVerification,
-  getSignin
+  getSignin,
+  recuperarUser
 }

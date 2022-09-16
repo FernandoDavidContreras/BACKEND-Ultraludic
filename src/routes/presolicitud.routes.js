@@ -1,8 +1,9 @@
 import { Router } from 'express'
 import { methods as presolicitudController } from '../controllers/presolicitud.controller'
+import { verifyToken, verifyAdmin } from '../controllers/verifyDates'
 const routerPresolicitud = Router()
 
-routerPresolicitud.get('/', presolicitudController.getPresolicitudes)
+routerPresolicitud.get('/', [verifyToken, verifyAdmin], presolicitudController.getPresolicitudes)
 
 routerPresolicitud.get('/:id', presolicitudController.getPresolicitud)
 

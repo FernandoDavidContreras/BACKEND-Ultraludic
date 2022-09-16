@@ -28,7 +28,7 @@ const getCotizacion = async (req, res) => {
 }
 const addCotizacion = async (req, res) => {
   try {
-    const { name, descripcion, costoTotal, requerimientoshardware, tiempoalquiler, requerimientoshardwareUser, requerimientossoftware, disenio, implementaciones, derechosUno, derechosDos, derechosTres, derechosCuatro, derechosCinco, derechosSeis, derechosSiete, idservices, idpresolicitud, costossoftware, costoshardware, impuestos, idUser } = req.body
+    const { name, descripcion, costoDolar, alquilerCosto, costoTotal, requerimientoshardware, tiempoalquiler, requerimientoshardwareUser, requerimientossoftware, disenio, tiempoEntrega, facturacion, implementaciones, derechosUno, idservices, idpresolicitud, costossoftware, costoshardware, impuestos, idUser } = req.body
     if (name === undefined || costoTotal === undefined || requerimientossoftware === undefined || idservices === undefined || idpresolicitud === undefined || costossoftware === undefined || idUser === undefined || disenio === undefined || implementaciones === undefined) {
       res.status(400).json({ message: 'Bad request. Please fill all field.' })
     }
@@ -36,6 +36,8 @@ const addCotizacion = async (req, res) => {
     await Cotizacion.create({
       name,
       descripcion,
+      costoDolar,
+      alquilerCosto,
       requerimientoshardware,
       tiempoalquiler,
       requerimientoshardwareUser,
@@ -45,14 +47,10 @@ const addCotizacion = async (req, res) => {
       impuestos,
       costoTotal,
       disenio,
+      tiempoEntrega,
+      facturacion,
       implementaciones,
       derechosUno,
-      derechosDos,
-      derechosTres,
-      derechosCuatro,
-      derechosCinco,
-      derechosSeis,
-      derechosSiete,
       idservices,
       idpresolicitud,
       idUser
@@ -101,13 +99,7 @@ const getRelacionCotizacion = async (req, res) => {
         'costoTotal',
         'disenio',
         'implementaciones',
-        'derechosUno',
-        'derechosDos',
-        'derechosTres',
-        'derechosCuatro',
-        'derechosCinco',
-        'derechosSeis',
-        'derechosSiete'
+        'derechosUno'
       ],
       include: [
         {

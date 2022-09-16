@@ -45,13 +45,14 @@ const getCostosHardwareService = async (req, res) => {
 // funcion para agregar datos a la base de datos.
 const addCostosHardware = async (req, res) => {
   try {
-    const { name, semana, idservicio } = req.body
+    const { name, semana, costo, idservicio } = req.body
     if (name === undefined || semana === undefined) {
       res.status(400).json({ message: 'Bad request. Please fill all field.' })
     }
     await costosHardware.create({
       name,
       semana,
+      costo,
       idservicio
     })
     res.json({ message: 'costos add' })
@@ -82,9 +83,9 @@ const updateCostosHardware = async (req, res) => {
   try {
     const { id } = req.params
 
-    const { name, semana, idservicio } = req.body
+    const { name, semana, costo, idservicio } = req.body
 
-    if (id === undefined || semana === undefined || name === undefined || idservicio === undefined) {
+    if (id === undefined || semana === undefined || costo === undefined || name === undefined || idservicio === undefined) {
       res.status(400).json({ message: 'Bad request. Please fill all field.' })
     }
     const result = await costosHardware.findByPk(id)

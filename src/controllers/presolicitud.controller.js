@@ -30,13 +30,13 @@ const getPresolicitud = async (req, res) => {
 // agregar una solicitud a la tabla Solicitud de la BD
 const addPresolicitud = async (req, res) => {
   try {
-    const { descripcion, requerimientosHardware, requerimientosHardwareUser, requerimientosSoftware, tiempo, tiempoAlquiler, kiosco, empresa, cotizada, idservices, idusuarios } = req.body
+    const { descripcion, venta, requerimientosHardware, requerimientosHardwareUser, requerimientosSoftware, tiempo, tiempoAlquiler, kiosco, empresa, cotizada, idservices, idusuarios } = req.body
 
     if (descripcion === undefined || tiempo === undefined || empresa === undefined || idservices === undefined || idusuarios === undefined || requerimientosSoftware === undefined || kiosco === undefined) {
       res.status(400).json({ message: 'Bad request. Please fill all field.' })
     }
     const newPresolicitud = await Solicitud.create(
-      { descripcion, requerimientosHardware, requerimientosHardwareUser, requerimientosSoftware, tiempo, tiempoAlquiler, kiosco, empresa, cotizada, idservices, idusuarios }
+      { descripcion, venta, requerimientosHardware, requerimientosHardwareUser, requerimientosSoftware, tiempo, tiempoAlquiler, kiosco, empresa, cotizada, idservices, idusuarios }
     )
     res.json(newPresolicitud)
   } catch (error) {
