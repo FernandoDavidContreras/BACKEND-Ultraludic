@@ -10,7 +10,7 @@ import { sequelize } from './database/database'
 
 const main = async () => {
   try {
-    await sequelize.sync({ force: false })
+    await sequelize.sync({ alter: false })
     app.listen(app.get('port'))
     console.log(`Server on port ${app.get('port')}`)
   } catch (error) {

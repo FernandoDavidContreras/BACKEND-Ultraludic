@@ -15,7 +15,7 @@ export const Cotizacion = sequelize.define('Cotizacion', {
     type: DataTypes.TEXT
   },
   costoDolar: {
-    type: DataTypes.INTEGER
+    type: DataTypes.FLOAT
   },
   alquilerCosto: {
     type: DataTypes.STRING
