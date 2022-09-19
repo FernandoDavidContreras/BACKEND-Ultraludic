@@ -8,6 +8,7 @@ import routerPresolicitud from './routes/presolicitud.routes'
 import usuariosRoute from './routes/usuario.routes'
 import routesCotizacion from './routes/cotizacion.route'
 import costosHardwareRoutes from './routes/costosHardware.routes'
+import rolesRoutes from './routes/roles.routes'
 
 const app = express()
 
@@ -29,4 +30,5 @@ app.use('/api/presolicitud', routerPresolicitud)
 app.use('/api/usuarios', usuariosRoute)
 app.use('/api/cotizacion', routesCotizacion)
 app.use('/api/costoshardware', costosHardwareRoutes) // routes)
+app.use('/api/roles', rolesRoutes) // routes roles)
 export default app
