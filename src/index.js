@@ -1,12 +1,12 @@
 import app from './app'
 import { sequelize } from './database/database'
-// import './../models/costos'
-// import './../models/cotizacion'
-// import './../models/servicios'
-// import './../models/solicitud'
-// import './../models/usuarios'
-// import './../models/roles'
-// import './../models/costosHardaware'
+import './../models/costos'
+import './../models/cotizacion'
+import './../models/servicios'
+import './../models/solicitud'
+import './../models/usuarios'
+import './../models/roles'
+import './../models/costosHardaware'
 
 const main = async () => {
   try {

@@ -9,6 +9,6 @@ routerPresolicitud.get('/:id', presolicitudController.getPresolicitud)
 
 routerPresolicitud.post('/', presolicitudController.addPresolicitud)
 
-routerPresolicitud.delete('/:id', presolicitudController.deletePresolicitud)
+routerPresolicitud.delete('/:id', verifyToken, presolicitudController.deletePresolicitud)
 
 export default routerPresolicitud

@@ -13,7 +13,7 @@ costosRoutes.get('/:id', costosController.getCosto)
 costosRoutes.get('/service/:id', costosController.getCostoService)
 
 // ruta para agregar un elemento de la tabla costos a la base de datos
-costosRoutes.post('/', costosController.addCostos)
+costosRoutes.post('/', [verifyToken, verifyAdmin], costosController.addCostos)
 
 // ruta para actualizar un dato de la tabla costos base de datos
 costosRoutes.put('/:id', [verifyToken, verifyAdmin], costosController.updateCostos)
