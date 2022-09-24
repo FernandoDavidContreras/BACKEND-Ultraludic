@@ -10,5 +10,5 @@ export default {
   database: process.env.DATABASE || 'ultraludic_bd',
   user: process.env.USER || 'root',
   password: process.env.PASSWORD || 'fernando89',
-  secret: process.env.SECRET || ''
+  secret: process.env.SECRET || 'secretTokenId'
 }

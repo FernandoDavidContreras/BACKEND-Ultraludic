@@ -10,7 +10,7 @@ import './../models/costosHardaware.js'
 
 const main = async () => {
   try {
-    await sequelize.sync({ force: true })
+    await sequelize.sync()
     app.listen(app.get('port'))
     console.log(`Server on port ${app.get('port')}`)
   } catch (error) {
