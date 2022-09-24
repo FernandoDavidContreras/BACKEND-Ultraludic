@@ -9,11 +9,12 @@ import usuariosRoute from './routes/usuario.routes'
 import routesCotizacion from './routes/cotizacion.route'
 import costosHardwareRoutes from './routes/costosHardware.routes'
 import rolesRoutes from './routes/roles.routes'
+import { PORT } from './config'
 
 const app = express()
 
 // settings
-app.set('port', 4000)
+app.set('port', PORT)
 
 // Middlewares
 app.use(morgan('dev'))
