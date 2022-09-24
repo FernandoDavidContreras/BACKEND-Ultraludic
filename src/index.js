@@ -11,8 +11,6 @@ import './../models/costosHardaware.js'
 const main = async () => {
   try {
     await sequelize.sync()
-    await sequelize.authenticate()
-    console.log('connection to databse')
     app.listen(app.get('port'))
     console.log(`Server on port ${app.get('port')}`)
   } catch (error) {
