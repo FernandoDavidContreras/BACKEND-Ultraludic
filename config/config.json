@@ -15,9 +15,9 @@
   },
   "production": {
     "username": "root",
-    "password": "fernando89",
-    "database": "ultraludic_bd",
-    "host": "127.0.0.1",
+    "password": "L4GWI9hvxTZ9kSE1zxbM",
+    "database": "railway",
+    "host": "containers-us-west-56.railway.app",
     "dialect": "mysql"
   }
 }
