@@ -1,7 +1,7 @@
-import { Cotizacion } from '../../models/cotizacion'
-import { costosHardware } from '../../models/costosHardaware'
-import { CostosSoftware } from '../../models/costos'
-import { Servicios } from '../../models/servicios'
+import { Cotizacion } from '../../models/cotizacion.js'
+import { costosHardware } from '../../models/costosHardaware.js'
+import { CostosSoftware } from '../../models/costos.js'
+import { Servicios } from '../../models/servicios.js'
 
 const getCotizaciones = async (req, res) => {
   try {

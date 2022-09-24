@@ -1,4 +1,4 @@
-import { costosHardware } from '../../models/costosHardaware'
+import { costosHardware } from '../../models/costosHardaware.js'
 
 // acceso a datos que estan registrados en la tabla costos de la Base de Datos
 const getCostosHardware = async (req, res) => {

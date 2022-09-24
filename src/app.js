@@ -2,14 +2,14 @@ import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 // importamos archivos de funcionamiento del proyecto
-import costosRoutes from './routes/costos.routes'
-import services from './routes/services.routes'
-import routerPresolicitud from './routes/presolicitud.routes'
-import usuariosRoute from './routes/usuario.routes'
-import routesCotizacion from './routes/cotizacion.route'
-import costosHardwareRoutes from './routes/costosHardware.routes'
-import rolesRoutes from './routes/roles.routes'
-import { PORT } from './config'
+import costosRoutes from './routes/costos.routes.js'
+import services from './routes/services.routes.js'
+import routerPresolicitud from './routes/presolicitud.routes.js'
+import usuariosRoute from './routes/usuario.routes.js'
+import routesCotizacion from './routes/cotizacion.route.js'
+import costosHardwareRoutes from './routes/costosHardware.routes.js'
+import rolesRoutes from './routes/roles.routes.js'
+import { PORT } from './config.js'
 
 const app = express()
 

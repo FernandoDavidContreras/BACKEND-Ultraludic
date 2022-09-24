@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { methods as presolicitudController } from '../controllers/presolicitud.controller'
-import { verifyToken, verifyAdmin } from '../controllers/verifyDates'
+import { methods as presolicitudController } from '../controllers/presolicitud.controller.js'
+import { verifyToken, verifyAdmin } from '../controllers/verifyDates.js'
 const routerPresolicitud = Router()
 
 routerPresolicitud.get('/', [verifyToken, verifyAdmin], presolicitudController.getPresolicitudes)

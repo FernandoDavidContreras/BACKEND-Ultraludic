@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { methods as services } from '../controllers/services.controller'
+import { methods as services } from '../controllers/services.controller.js'
 
 const routerServices = Router()
 

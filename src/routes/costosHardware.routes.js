@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { methods as costosController } from '../controllers/costosHardware.controller'
-import { verifyToken, verifyAdmin } from '../controllers/verifyDates'
+import { methods as costosController } from '../controllers/costosHardware.controller.js'
+import { verifyToken, verifyAdmin } from '../controllers/verifyDates.js'
 
 const costosHardwareRoutes = Router()
 

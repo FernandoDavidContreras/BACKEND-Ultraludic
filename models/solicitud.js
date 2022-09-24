@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize'
-import { sequelize } from '../src/database/database'
-import { Cotizacion } from './cotizacion'
+import { sequelize } from '../src/database/database.js'
+import { Cotizacion } from './cotizacion.js'
 
 // estructura de la tabla solicitud
 export const Solicitud = sequelize.define('solicitud', {

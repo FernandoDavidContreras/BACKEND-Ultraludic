@@ -1,4 +1,4 @@
-import { Solicitud } from '../../models/solicitud'
+import { Solicitud } from '../../models/solicitud.js'
 
 // obtener todos los datos de la tabla presolicitud
 const getPresolicitudes = async (req, res) => {

@@ -1,9 +1,9 @@
 import { DataTypes } from 'sequelize'
-import { sequelize } from '../src/database/database'
-import { CostosSoftware } from './costos'
-import { Solicitud } from './solicitud'
-import { Cotizacion } from './cotizacion'
-import { costosHardware } from './costosHardaware'
+import { sequelize } from '../src/database/database.js'
+import { CostosSoftware } from './costos.js'
+import { Solicitud } from './solicitud.js'
+import { Cotizacion } from './cotizacion.js'
+import { costosHardware } from './costosHardaware.js'
 
 // estructura de la tabla servicios de la BD
 export const Servicios = sequelize.define('servicios', {

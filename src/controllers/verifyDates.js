@@ -1,8 +1,9 @@
-import { Usuarioos } from '../../models/usuarios'
-import { Roles } from '../../models/roles'
+import { Usuarioos } from '../../models/usuarios.js'
+import { Roles } from '../../models/roles.js'
+import pgj from 'jsonwebtoken'
 
-import config from '../config'
-const jwt = require('jsonwebtoken')
+import config from '../config.js'
+const jwt = pgj
 
 export const verifyToken = (req, res, next) => {
   try {

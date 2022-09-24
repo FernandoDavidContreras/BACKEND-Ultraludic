@@ -1,9 +1,10 @@
 import { DataTypes } from 'sequelize'
-import { sequelize } from '../src/database/database'
-import { Solicitud } from './solicitud'
-import { Cotizacion } from './cotizacion'
+import { sequelize } from '../src/database/database.js'
+import { Solicitud } from './solicitud.js'
+import { Cotizacion } from './cotizacion.js'
+import pkg from 'bcryptjs'
 
-const bcrypt = require('bcryptjs')// variable para acceder a las funciones de encriptamiento para el password
+const bcrypt = pkg// variable para acceder a las funciones de encriptamiento para el password
 
 // estructura de la BD Usuarios
 export const Usuarioos = sequelize.define('Usuarios', {

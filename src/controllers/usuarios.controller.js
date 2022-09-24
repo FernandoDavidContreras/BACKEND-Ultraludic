@@ -1,9 +1,10 @@
-import { Usuarioos, methods as usuariosMetodos } from '../../models/usuarios'
-import { Cotizacion } from '../../models/cotizacion'
-
-import config from '../config'
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')// variable para acceder a las funciones de encriptamiento para el password
+import { Usuarioos, methods as usuariosMetodos } from '../../models/usuarios.js'
+import { Cotizacion } from '../../models/cotizacion.js'
+import pgj from 'jsonwebtoken'
+import pkg from 'bcryptjs'
+import config from '../config.js'
+const bcrypt = pkg// variable para acceder a las funciones de encriptamiento para el password
+const jwt = pgj
 
 // funcion para obtener todos lo datos de la BD
 const getUsuarios = async (req, res) => {

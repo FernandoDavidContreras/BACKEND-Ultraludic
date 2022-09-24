@@ -1,5 +1,5 @@
 {
-  "name": "restappi-basededatos",
+  "name": "ultraludic_api_backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
   "scripts": {
     "start" : "node src/index.js",
     "babel-node": "babel-node --presets=@babel/preset-env",
-    "dev": "nodemon --exec npm run babel-node src/index.js",
+    "dev": "nodemon src/index.js",
     "lint": "eslint ."
   },
   "keywords": [],

@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize'
-import { sequelize } from '../src/database/database'
+import { sequelize } from '../src/database/database.js'
 
 // estructura de la tabla cotizacion de la BD
 export const Cotizacion = sequelize.define('Cotizacion', {

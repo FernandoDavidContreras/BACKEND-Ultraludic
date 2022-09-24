@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize'
-import { sequelize } from '../src/database/database'
+import { sequelize } from '../src/database/database.js'
 
 export const costosHardware = sequelize.define('CostosHardware', {
   idCostoHardware: {

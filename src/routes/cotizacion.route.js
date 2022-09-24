@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { methods } from '../controllers/cotizacion.controller'
-import { verifyToken, verifyAdmin } from '../controllers/verifyDates'
+import { methods } from '../controllers/cotizacion.controller.js'
+import { verifyToken, verifyAdmin } from '../controllers/verifyDates.js'
 
 const routesCotizacion = Router()
 

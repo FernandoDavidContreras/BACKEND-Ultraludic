@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { methods } from '../controllers/usuarios.controller'
-import { verifyToken, verifyAdmin } from '../controllers/verifyDates'
+import { methods } from '../controllers/usuarios.controller.js'
+import { verifyToken, verifyAdmin } from '../controllers/verifyDates.js'
 const usuariosRoute = Router()
 
 usuariosRoute.get('/', [verifyToken, verifyAdmin], methods.getUsuarios)// ruta para obtener usuarios
