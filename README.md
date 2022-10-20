@@ -8,3 +8,6 @@ HOST=host
 DATABASE=database
 USER=user
 PASSWORD=password
+SECRET=secret
+PORT_BD = portDB
+PORT = port
